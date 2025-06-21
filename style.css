@@ -12,7 +12,6 @@ h1, h2, h3 {
 }
 
 nav {
-  margin: 0 0 50px 0;
   padding: 8px;
   border-bottom: 1px solid black;
   border-top: 1px solid black;
@@ -35,7 +34,6 @@ nav ul {
 
 footer {
   border-top: 1px solid black;
-  margin: 50px 0;
   padding: 8px;
 }
 
@@ -67,4 +65,12 @@ footer ul {
 
 .margin-bottom {
   margin-bottom: .8em;
+}
+
+.big-margin-bottom {
+  margin-bottom: 50px;
+}
+
+.big-margin-top {
+  margin-top: 50px;
 }
