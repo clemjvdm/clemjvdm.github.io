@@ -1,0 +1,37 @@
+body {
+  background-color: lemonchiffon;
+  max-width: 800px;
+  margin: 8vh auto;
+  padding: 5px;
+  font-family: serif;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+
+h1, h2, h3 {
+  line-height: 1;
+  font-family: serif;
+  font-size: 26px;
+}
+
+nav {
+  margin: 0;
+  padding: 8px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em 30px;
+  flex-wrap: wrap;
+}
+
+.content {
+  margin: 40px 20px;
+}
