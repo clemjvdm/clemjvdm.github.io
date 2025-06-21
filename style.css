@@ -48,3 +48,23 @@ footer ul {
   gap: 20px 10px;
   flex-wrap: wrap;
 }
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.margin-bottom {
+  margin-bottom: .8em;
+}
