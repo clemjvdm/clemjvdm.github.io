@@ -3,7 +3,6 @@ body {
   max-width: 800px;
   margin: 8vh auto;
   padding: 5px;
-  font-family: serif;
   line-height: 1.3;
   font-size: 14px;
 }
@@ -11,7 +10,6 @@ body {
 
 h1, h2, h3 {
   line-height: 1;
-  font-family: serif;
   font-size: 26px;
 }
 
