@@ -1,5 +1,5 @@
 body {
-  background-color: lemonchiffon;
+  background-color: white;
   width: 800px;
   margin: 8vh auto;
   padding: 5px;
@@ -55,6 +55,10 @@ footer ul {
 
 .no-margin {
   margin: 0;
+}
+
+.reduced-margin {
+  margin: .3em;
 }
 
 .no-bullets {

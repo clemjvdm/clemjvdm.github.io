@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, user-scalable=yes">
+    <title>libcal-cli</title>
+    <link href="../style.css" rel="stylesheet">
+    <link rel="prefetch" href="../index.html">
+    <link rel="prefetch" href="../projects.html">
+    <link rel="prefetch" href="../writing.html">
+    <link rel="prefetch" href="../resume.html">
+    <link rel="prefetch" href="../contact.html">
+  </head>
+  <body>
+    <h1 class="margin-bottom" style="text-align: center;">libcal-cli</h1> 
+    <nav class="big-margin-bottom">
+      <ul>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="../projects.html">projects</a></li>
+        <li><a href="../writing.html">writing</a></li>
+        <li><a href="../library.html">library</a></li>
+        <li><a href="../resume.html">resume</a></li>
+        <li><a href="../contact.html">contact</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+
+      <p>The libcal-cli tool is a minimal command line utility to book seats at the university of Groningen library. I developed it after tying to find vulnerabilities in the library's booking system, since that had familiarized myself with service. This service is called libcal and is actually used by over 7,500 universities worldwide <a href="https://www.springshare.com/company">according to their website</a>. Unfortunately libcal-cli doesn't work for all these universities, more on this later (see 'What could be better').</p>
+
+      <h3>The problem</h3>
+
+      <p>The problem this tool is trying to solve is the hassle that it can be to book a seat during periods where the library is busy. The process is as follows:</p>
+
+      <ol>
+        <li>go to libcal's new reservation page</li>
+        <li>wait for the chunky website to load</li>
+        <li>witness the sea of red squares representing booked seats</li>
+        <li>tediously click through a hundred pages of seats</li>
+        <li>find an availability for 4h, starting a later than you had wanted</li>
+        <li>ponder whether you should grab this one while you can, or keep looking for a better option</li>
+        <li>you decide to book it, but a single missclick means you have to refresh the page and start over, so you are very careful</li>
+        <li>finally you fill in a form, and get your booking</li>
+      </ol>
+
+      <p>Admittedly this is worse case scenario, but having to click through easily over 30 pages every time is enough to make it quite annoying. The problem get's completely unmannagable if you try to go in a group, as you'd have to find adjacent seats hence an even longer search ensues.</p>
+
+      <h3>The solution</h3>
+
+      <p>With libcal cli you can just write <code>libcal-cli book 3.A</code> to book the seat which is available for the longest duration in area 3.A. Given seat names are given as &lt;floor&gt;.&lt;area&gt;.&lt;number&gt; we can also specify either only a floor, or a specific seat number. For example with <code>book 3</code> and <code>book 3.A.123</code>.</p>
+
+      <p>We can also book seats for groups with for example <code>book 3.A --group=4</code>. This will look for the 4 adjacent seats in area 3.A with the longest mean available booking time.</p>
+
+      <p>Once the seat is booked, you will get an email with the check in code, you can check in with the CLI using <code>checkin &lt;checkin-code&gt;</code>.</p>
+
+      <p>The details used in the form for the booking are one defined in a user profile. The first time using libcal-cli the user is prompted to fill this one in, and it is then persistantly stored. It can be viewed or changed at any time with <code>libcal profile</code>.</p>
+
+      <h3>What could be better</h3>
+      <p>libcal CLI as of now is super minimal. It does everything I need it to do and nothing more. However, there is a possibility to extend it in a number of meaningful ways. Of course, we could add many different algorithms for making booking based on different criteria, for example by stating that group bookings don't have to be precisely adjacent, but rather within a certain distance of each other. Or taking a booking starting time into account. Such changes are super easy to implement.</p>
+
+      <p>The best extension that could be made however is without a doubt making libcal-cli work with more than just the university of Groningen's website. The problem is that different universities ask for different details in the booking forms. As far as I've seen, there is no way to tell which details are required other than the website's HTML form. But the problem is that these forms can be quite different accross different university websites, so extracting the needed information from the HTML wouldn't be straightfoward, although I'm sure it's possible.</p>
+
+      <h3>Examples</h3>
+      <pre><code>
+&gt; libcal-cli
+
+Usage:
+  libcal-cli book &lt;seat&gt; [--day=+N] [--group=SIZE]
+  libcal-cli checkin &lt;code&gt;
+  libcal-cli profile [--fname=&lt;first_name&gt;] [--lname=&lt;last_name&gt;] [--phone=&lt;phone_number&gt;] [--email=&lt;email&gt;] [--snum=&lt;student_number&gt;]
+      </code></pre>
+
+      <pre><code>
+&gt; libcal-cli profile --email=baz@student.rug.nl --snum=s1231123
+Updated email address.
+Updated student number.
+      </code></pre>
+
+      <pre><code>
+&gt; libcal-cli book 3.A
+Attempting to book 3.A, in 0 days for a group size of 1
+Booked seat 3.A.001 from 2025-06-22 12:30:00 until 2025-06-23 00:00:00.
+      </code></pre>
+
+      <h3 id="downloads">Downloads</h3>
+
+      <strong>Latest</strong>
+      <ul class="reduced-margin">
+        <li><a href="../downloads/libcal-cli/libcal-cli-v0.1.0-linux.tar.gz" download>libcal-cli-v0.1.0-linux.tar.gz</a></li>
+        <li><a href="../downloads/libcal-cli/libcal-cli-v0.1.0-macos.tar.gz" download>libcal-cli-v0.1.0-macos.tar.gz</a></li>
+        <li><a href="../downloads/libcal-cli/libcal-cli-v0.1.0-win.exe" download>libcal-cli-v0.1.0-win.exe</a></li>
+        <li><a href="../downloads/libcal-cli/libcal-cli.js" download>libcal-cli-v0.1.0-source.js</a></li>
+      </ul>
+
+    </div>
+      
+    <footer class="big-margin-top">
+      <ul>
+        <img src="../images/vcss.png" alt="certified CSS">
+        <img src="../images/vcss-blue.png" alt="blue-certified CSS">
+        <img src="../images/gnu-linux.gif" alt="Linux is great">
+        <img src="../images/anybrowser.gif" alt="runs on any browser">
+        <img src="../images/learn_html.gif" alt="learn html">
+        <img src="../images/ieshit.gif" alt="internet explorer is not great">
+        <img src="../images/linux_powered.gif" alt="powered by GNU/Linux">
+        <img src="../images/ffmpeg.gif" alt="">
+      </ul>
+    </footer>
+  </body>
+</html>
